@@ -22,7 +22,8 @@
             "commands/*": ["./src/commands/*"],
             "events/*": ["./src/events/*"],
             "types/*": ["./src/types/*"],
-            "utils/*": ["./src/utils/*"]
+            "utils/*": ["./src/utils/*"],
+            "handlers/*": ["./src/handlers/*"]
         },
     },
     
