@@ -1,13 +1,11 @@
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder } from 'discord.js';
+
+const GENERIC_EMBED_COLOR = 0x004d71
 
 export function genericEmbed(description: string): EmbedBuilder {
-    return new EmbedBuilder().setColor(0xe9c121).setDescription(description);
-}
-
-export function sendForm() {
-    
+    return new EmbedBuilder().setColor(GENERIC_EMBED_COLOR).setDescription(description);
 }
 
 export const errorEmbed = new EmbedBuilder()
-    .setColor("Red")
-    .setDescription("`An unexpected error has occured`")
+    .setColor('Red')
+    .setDescription('`An unexpected error has occured`')
