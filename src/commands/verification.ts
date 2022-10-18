@@ -15,29 +15,9 @@ export const VerifyCommand: Command = {
     name: 'verify',
     description: 'Initializes the verification process for users',
     async handle(interaction) {
-        const user = interaction.user;
-        const modal = new ModalBuilder()
-            .setCustomId(`modal_${user.id}`)
-            .setTitle('Edmonds Student Verification Form')
-            .addComponents(
-                new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-                    new TextInputBuilder()
-                        .setCustomId('ctcLinkId')
-                        .setMinLength(9)
-                        .setMaxLength(9)
-                        .setLabel('Enter your ctcLinkID')
-                        .setRequired(true)
-                ),
-                new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
-                    new TextInputBuilder()
-                        .setCustomId('dateOfBirth')
-                        .setLabel('Enter you date of birth')
-                        .setMinLength(10)
-                        .setMaxLength(10)
-                        .setRequired(true)
-                )
-            );
-
+        const member = await interaction.guild?.members.fetch(interaction.user.id);
+        if (member?.roles.cache.some(role => role.id === 'Hello'))
+            modal.setCustomId(`modal_${member?.user.id}`)
         await interaction.showModal(modal);
     },
 };
@@ -46,7 +26,7 @@ export async function handleModalSubmit(interaction: ModalSubmitInteraction) {
     const member = interaction.member;
     const fields = interaction.fields;
     const ctcLinkID = fields.getTextInputValue('ctcLinkId');
-    const date = moment(fields.getTextInputValue('dateOfBirth'),['MM/DD/YYYY', 'DD/MM/YYYY'], true);
+    const date = moment(fields.getTextInputValue('dateOfBirth'), ['MM/DD/YYYY', 'DD/MM/YYYY'], true);
 
     if (date.toString() !== 'Invalid Date' || (moment().unix() - date.unix()) <= 0) {
         verifyStudent(ctcLinkID, date.format('MM/DD/YYYY')).then((result) => {
@@ -58,3 +38,25 @@ export async function handleModalSubmit(interaction: ModalSubmitInteraction) {
         await interaction.reply({ ephemeral: true });
     }
 }
+
+const modal = new ModalBuilder()
+    .setTitle('Edmonds Student Verification Form')
+    .addComponents(
+        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+            new TextInputBuilder()
+                .setCustomId('ctcLinkId')
+                .setMinLength(9)
+                .setMaxLength(9)
+                .setLabel('Enter your ctcLinkID')
+                .setRequired(true)
+        ),
+        new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(
+            new TextInputBuilder()
+                .setCustomId('dateOfBirth')
+                .setLabel('Enter you date of birth')
+                .setMinLength(10)
+                .setMaxLength(10)
+                .setRequired(true)
+        )
+    );
+
