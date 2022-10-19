@@ -1,45 +1,52 @@
 import {
     ActionRowBuilder,
-    ModalActionRowComponentBuilder,
+    ModalActionRowComponentBuilder
 } from '@discordjs/builders';
 import {
     ModalBuilder,
     ModalSubmitInteraction,
-    TextInputBuilder,
+    TextInputBuilder
 } from 'discord.js';
-import { Command } from 'types/command';
-import { verifyStudent } from 'utils/triton_lookup';
+import { getGuildConfig } from 'handlers/GuildConfigurationHandler';
 import moment from 'moment';
+import { Command } from 'types/command';
+import { errorEmbed } from 'utils/discord_helper';
+import { verifyStudent } from 'utils/triton_lookup';
 
+const commandId = 'verify'
 export const VerifyCommand: Command = {
-    name: 'verify',
+    name: commandId,
     description: 'Initializes the verification process for users',
-    async handle(interaction) {
-        const member = await interaction.guild?.members.fetch(interaction.user.id);
-        if (member?.roles.cache.some(role => role.id === 'Hello'))
-            modal.setCustomId(`modal_${member?.user.id}`)
+
+    async handleCommand(interaction) {
+        const member = interaction.guild?.members.cache.get('');
+        if(member?.roles.cache.some(role => role.id === getGuildConfig()))
         await interaction.showModal(modal);
     },
+
+    async handleModal(interaction) {
+        const guildConfig = getGuildConfig(interaction.guild?.id!)
+    }
 };
 
 export async function handleModalSubmit(interaction: ModalSubmitInteraction) {
-    const member = interaction.member;
+    const guildConfig = getGuildConfig(interaction.guild?.id!)
     const fields = interaction.fields;
     const ctcLinkID = fields.getTextInputValue('ctcLinkId');
     const date = moment(fields.getTextInputValue('dateOfBirth'), ['MM/DD/YYYY', 'DD/MM/YYYY'], true);
 
     if (date.toString() !== 'Invalid Date' || (moment().unix() - date.unix()) <= 0) {
         verifyStudent(ctcLinkID, date.format('MM/DD/YYYY')).then((result) => {
-            if (result) {
-                interaction.guild?.roles.cache.find(role => role.name == '');
-            }
+            if (result)
+                guildConfig?.verifyMember(interaction.client, interaction.user.id)
         });
     } else {
-        await interaction.reply({ ephemeral: true });
+        await interaction.reply({ embeds: [errorEmbed], ephemeral: true });
     }
 }
 
 const modal = new ModalBuilder()
+    .setCustomId(commandId)
     .setTitle('Edmonds Student Verification Form')
     .addComponents(
         new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(

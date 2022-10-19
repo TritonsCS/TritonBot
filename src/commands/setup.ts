@@ -13,12 +13,12 @@ export const SetupCommand: Command = {
         }
     ],
 
-    async handle(interaction) {
+    async handleCommand(interaction) {
         const guildId = interaction.guild?.id;
         const override = interaction.options.getBoolean('override');
         
         if (!hasGuildConfig(guildId!) || override) {
-                    
+            
 
         } else {
             const embed = genericEmbed('An configuration for this server already exists. If you\'d like to override the current configuration, please execute the command again with the override flag.')

@@ -1,8 +1,10 @@
 import {
     ChatInputApplicationCommandData,
     ChatInputCommandInteraction,
+    ModalSubmitInteraction,
 } from "discord.js";
 
 export interface Command extends ChatInputApplicationCommandData {
-    handle: (interaction: ChatInputCommandInteraction) => void;
+    handleCommand: (interaction: ChatInputCommandInteraction) => void;
+    handleModal?: (interaction: ModalSubmitInteraction) => void;
 }

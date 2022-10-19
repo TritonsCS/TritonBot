@@ -1,4 +1,4 @@
-import { EmbedBuilder } from 'discord.js';
+import { Client, EmbedBuilder, Interaction } from 'discord.js';
 
 const GENERIC_EMBED_COLOR = 0x004d71
 
