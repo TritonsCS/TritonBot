@@ -1,6 +1,7 @@
-import { ChatInputCommandInteraction, Client, Interaction, ModalSubmitInteraction } from "discord.js";
-import { commandsList } from "bot";
-import { errorEmbed } from "utils/discord_helper";
+import { commandsList } from "../bot";
+import { ChatInputCommandInteraction, Client, Interaction } from "discord.js";
+import { errorEmbed } from "../utils/discord_helper";
+import { handleModalSubmit } from "../commands/verification";
 
 export default (client: Client): void => {
     client.on("interactionCreate", async (interaction: Interaction) => {
@@ -22,10 +23,5 @@ const handleSlashCommand = async (interaction: ChatInputCommandInteraction): Pro
         command.handleCommand(interaction);
         return;
     }
-
     interaction.reply({ embeds: [errorEmbed] })
-}
-
-const handleModalSubmit = async(interaction: ModalSubmitInteraction): Promise<void> => {
-    
 }

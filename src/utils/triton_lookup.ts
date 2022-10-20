@@ -3,7 +3,7 @@ import { platform } from "process";
 import { Builder, By, until } from "selenium-webdriver";
 import { Options, ServiceBuilder } from "selenium-webdriver/chrome";
 
-var SERVICE_BUILDER: ServiceBuilder
+var SERVICE_BUILDER: ServiceBuilder;
 
 export function initializeDriver(): boolean {
     var driver_name;
@@ -24,7 +24,7 @@ export function initializeDriver(): boolean {
             console.log("This OS is not supported yet");
             return false;
     }
-    const driver_path = path.join(__dirname, 'resources', driver_name)
+    const driver_path = path.join(__dirname, "resources", driver_name);
     SERVICE_BUILDER = new ServiceBuilder(driver_path);
     return true;
 }
@@ -33,10 +33,9 @@ export async function verifyStudent(
     ctcId: string,
     dob: string
 ): Promise<boolean> {
-
-    if(SERVICE_BUILDER == null){
-        initializeDriver()
-        console.log('Initialized driver') // Testing purposes
+    if (SERVICE_BUILDER == null) {
+        initializeDriver();
+        console.log("Initialized driver"); // Testing purposes
     }
 
     const options = new Options().addArguments(

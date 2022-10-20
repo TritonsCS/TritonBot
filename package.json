@@ -6,7 +6,7 @@
   "scripts": {
     "build": "yarn clean && tsc && yarn copy-files",
     "clean": "rimraf dist/",
-    "copy-files": "copyfiles resources/* data/* dist/",
+    "copy-files": "copyfiles resources/* dist/utils/ && copyfiles config.json .env dist/",
     "start:dev": "ts-node ./src/bot.ts",
     "start:prod": "node ./dist/bot.js"
   },
