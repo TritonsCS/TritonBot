@@ -1,4 +1,4 @@
-import { EmbedBuilder, Interaction } from "discord.js";
+import { EmbedBuilder, Interaction, ModalSubmitInteraction } from "discord.js";
 import { verifiedRole } from "../config.json";
 
 const GENERIC_EMBED_COLOR = 0x004d71;
@@ -9,8 +9,8 @@ export function genericEmbed(description: string): EmbedBuilder {
         .setDescription(description);
 }
 
-export function isMemberVerified(interaction: Interaction, id: string): boolean {
-    const member = interaction.guild?.members.cache.get(id);
+export function isMemberVerified(interaction: ModalSubmitInteraction): boolean {
+    const member = interaction.member?.roles.cache.find(r => r.name === 'Verified')
     return (
         member?.roles.cache.has(verifiedRole) ?? false
     );
