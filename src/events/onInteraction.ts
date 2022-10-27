@@ -6,7 +6,7 @@ import { handleModalSubmit } from "../commands/verification";
 export default (client: Client): void => {
     client.on("interactionCreate", async (interaction: Interaction) => {
         if (interaction.isChatInputCommand()) {
-            await handleSlashCommand(interaction);
+            await handleSlashCommand(client, interaction);
             return;
         }
 
@@ -17,10 +17,10 @@ export default (client: Client): void => {
     });
 };
 
-const handleSlashCommand = async (interaction: ChatInputCommandInteraction): Promise<void> => {
+const handleSlashCommand = async (client: Client, interaction: ChatInputCommandInteraction): Promise<void> => {
     const command = commandsList.find((c) => c.name === interaction.command?.name);
     if (command) {
-        command.handleCommand(interaction);
+        command.handleCommand(client, interaction);
         return;
     }
     interaction.reply({ embeds: [errorEmbed] })

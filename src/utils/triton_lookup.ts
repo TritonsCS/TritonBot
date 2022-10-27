@@ -1,9 +1,10 @@
 import path from "path";
 import { platform } from "process";
-import { Builder, By, until } from "selenium-webdriver";
+import { Builder, By, ThenableWebDriver, until } from "selenium-webdriver";
 import { Options, ServiceBuilder } from "selenium-webdriver/chrome";
 
 var SERVICE_BUILDER: ServiceBuilder;
+var driver: ThenableWebDriver;
 
 export function initializeDriver(): boolean {
     var driver_name;
@@ -51,7 +52,7 @@ export async function verifyStudent(
         "--output=/dev/null"
     );
 
-    const driver = new Builder()
+    driver = new Builder()
         .forBrowser("chrome")
         .setChromeService(SERVICE_BUILDER)
         .setChromeOptions(options)
@@ -70,10 +71,18 @@ export async function verifyStudent(
         // Check if html contains error message
         const html = await driver.getPageSource();
         const errorMsg = "Triton Access account not found";
-        if (html.includes(errorMsg)) return false;
-    } catch (ignore) {
-    } finally {
-        driver.quit();
+        if (html.includes(errorMsg)) {
+            console.log('No account')
+            return false;
+        }
+    } catch (err) {
+        console.log(err)
     }
+
+    console.log('Account found')
     return true;
+}
+
+export function quitDriver() {
+    driver.quit();
 }
