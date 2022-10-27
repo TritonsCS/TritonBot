@@ -17,14 +17,6 @@
         "removeComments": true,
         "typeRoots": ["node_modules/@types"],
         "sourceMap": false,
-        "paths": {
-            "bot": ["./src/bot.ts"],
-            "commands/*": ["./src/commands/*"],
-            "events/*": ["./src/events/*"],
-            "types/*": ["./src/types/*"],
-            "utils/*": ["./src/utils/*"],
-            "handlers/*": ["./src/handlers/*"]
-        },
     },
     
     "files": ["src/bot.ts"],
