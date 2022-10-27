@@ -1,8 +1,9 @@
 import {
     ChatInputApplicationCommandData,
     ChatInputCommandInteraction,
+    Client
 } from "discord.js";
 
 export interface Command extends ChatInputApplicationCommandData {
-    handleCommand: (interaction: ChatInputCommandInteraction) => void;
+    handleCommand: (client: Client, interaction: ChatInputCommandInteraction) => void;
 }
