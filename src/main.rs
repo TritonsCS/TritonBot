@@ -1,3 +1,5 @@
+mod commands;
+mod utils;
 use dotenv::dotenv;
 use serenity::async_trait;
 use serenity::model::prelude::Ready;
