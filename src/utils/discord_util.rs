@@ -1,4 +1,8 @@
-use serenity::{builder::CreateEmbed, utils::Color};
+use serenity::{
+    builder::CreateEmbed,
+    model::prelude::interaction::application_command::ApplicationCommandInteraction,
+    prelude::Context, utils::Color,
+};
 
 const DEFAULT_COLOR: Color = Color::new(0x004d71);
 
@@ -20,4 +24,10 @@ impl BasicEmbed {
     pub fn err(desc: &str) -> CreateEmbed {
         Self::create(Color::RED, &desc)
     }
+}
+
+pub async fn respond(ctx: Context, interaction: ApplicationCommandInteraction, embed: CreateEmbed) {
+    interaction
+        .create_followup_message(&ctx.http, |message| message.set_embed(embed))
+        .await;
 }

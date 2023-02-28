@@ -1,2 +1,2 @@
+pub mod discord_util;
 pub mod verification;
-pub mod embed;
