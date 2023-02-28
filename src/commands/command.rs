@@ -12,7 +12,7 @@ pub struct BaseCommand {
 }
 
 impl BaseCommand {
-    pub fn new(name: &str, description: &str, options: Option<Options>) -> BaseCommand {
+    pub fn new(name: &str, description: &str, options: Option<Options>) -> BaseCommand{
         // Ensure we don't have too many options
         let opt = match options {
             None => Vec::new(),
@@ -38,10 +38,12 @@ impl BaseCommand {
 
 #[async_trait::async_trait]
 pub trait Command {
-    fn get() -> BaseCommand;
-    async fn handle(ctx: Context, interaction: ApplicationCommandInteraction);
-    fn register(command: &mut CreateApplicationCommand) -> &mut CreateApplicationCommand {
-        let cmd = Self::get();
+
+    fn get(&self) -> BaseCommand;
+    async fn handle(&self, ctx: Context, interaction: ApplicationCommandInteraction);
+
+    fn register<'a>(&self, command: &'a mut CreateApplicationCommand) -> &'a mut CreateApplicationCommand {
+        let cmd = self.get();
         command.name(cmd.name).description(cmd.description);
 
         // Register all options

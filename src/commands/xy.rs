@@ -9,9 +9,11 @@ pub struct Xy;
 
 #[async_trait]
 impl Command for Xy {
-    fn get() -> BaseCommand {
+    fn get(&self) -> BaseCommand {
         BaseCommand::new("xy", "Explains the XY problem", None)
     }
 
-    async fn handle(ctx: Context, interaction: ApplicationCommandInteraction) {}
+    async fn handle(&self, ctx: Context, interaction: ApplicationCommandInteraction) {
+        
+    }
 }

@@ -14,11 +14,11 @@ pub struct Verify;
 
 #[async_trait::async_trait]
 impl Command for Verify {
-    fn get() -> BaseCommand {
+    fn get(&self) -> BaseCommand {
         BaseCommand::new("verify", "Starts the verification process", None)
     }
 
-    async fn handle(ctx: Context, interaction: ApplicationCommandInteraction) {
+    async fn handle(&self, ctx: Context, interaction: ApplicationCommandInteraction) {
         // Send modal
         interaction
             .create_interaction_response(&ctx.http, |resp| {
