@@ -11,16 +11,15 @@
 </div>
 <br/>
 
-
-
 ### Features
-- User verification command
-- XY problem command
+- [X] User verification - New members are required to verify using their ctcLinkId and birth date (See [Disclaimer](https://github.com/devPesto/TritonBot/edit/master/README.md#disclaimer) below)
+- [X] XY problem - Educate people on how to ask better questions 
+- [ ] Event/meeting planner - Plan group study sessions/meetings
+- [ ] Pizza Orders - Order pizzas based on how many people plan to show up to in-person meetings  
+- [ ] Class notifications - Notify people based 
 
-### TODO
-- Event/meeting planner
-- Ordering a pizza! 
-- Class notifications
+### Disclaimer
+Although this bot collects data used to verify students, this data is disposed after use and not stored in any way, shape or form in accordance with to Discord's TOS. See [Discord's Developer Terms of Service](https://discord.com/developers/docs/policies-and-agreements/developer-terms-of-service) for more information. 
 
 ### LICENSE
 This project is licensed under the [MIT](https://opensource.org/license/mit/) License
