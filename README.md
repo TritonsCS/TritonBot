@@ -16,7 +16,7 @@
 - [X] XY problem - Educate people on how to ask better questions 
 - [ ] Event/meeting planner - Plan group study sessions/meetings
 - [ ] Pizza Orders - Order pizzas based on how many people plan to show up to in-person meetings  
-- [ ] Class notifications - Notify people based 
+- [ ] Class notifications - Notify people based on what roles they select in the server?
 
 ### Disclaimer
 Although this bot collects data used to verify students, this data is disposed after use and not stored in any way, shape or form in accordance with to Discord's TOS. See [Discord's Developer Terms of Service](https://discord.com/developers/docs/policies-and-agreements/developer-terms-of-service) for more information. 
