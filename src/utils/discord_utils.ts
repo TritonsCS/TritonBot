@@ -12,14 +12,14 @@ export class Embeds {
         }
     }
 
-    static TitledEmbed(title: string, message: string): InteractionReplyOptions {
+    static TitledEmbed(title: string, message: string, ephemeral: boolean = true): InteractionReplyOptions {
         return {
             embeds: [new EmbedBuilder()
                 .setColor(0x004d71)
                 .setTitle(title)
                 .setDescription(message)
             ],
-            ephemeral: true
+            ephemeral: ephemeral
         }
     }
 
