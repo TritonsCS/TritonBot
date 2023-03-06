@@ -13,7 +13,7 @@ export const AboutCommand: Command = {
             Author: Pesto
             Git: https://github.com/devPesto/TritonBot
             `,
-            true
+            false
         ))
     }
 }
