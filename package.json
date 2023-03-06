@@ -1,7 +1,7 @@
 {
   "name": "tritonbot",
   "version": "1.0.0",
-  "description": "Discord bot that verifies if users are students at Edmonds College",
+  "description": "Discord bot for the Edmonds College CS Club.",
   "main": "bot.js",
   "scripts": {
     "build": "yarn clean && tsc && yarn copy-files",
