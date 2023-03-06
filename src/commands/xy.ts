@@ -1,4 +1,4 @@
-import { Embeds } from "../utils/discord_utils"
+import { Embeds } from "../utils/embeds"
 import { Command } from "../interface/command"
 
 

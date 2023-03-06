@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { ModalSubmitInteraction } from 'discord.js'
 import FormData from 'form-data'
-import { Embeds } from './discord_utils'
+import { Embeds } from './embeds'
 import { verifiedRole } from '../config.json'
 
 const ERROR_MSG = 'Triton Access account not found'

@@ -2,35 +2,35 @@ import { EmbedBuilder, InteractionReplyOptions } from 'discord.js'
 
 export class Embeds {
 
-    static BasicEmbed(message: string): InteractionReplyOptions {
+    static BasicEmbed(message: string, ephermal: boolean = true): InteractionReplyOptions {
         return {
             embeds: [new EmbedBuilder()
                 .setColor(0x004d71)
                 .setDescription(message)
             ],
-            ephemeral: true
+            ephemeral: ephermal
         }
     }
 
-    static TitledEmbed(title: string, message: string, show: boolean): InteractionReplyOptions {
+    static TitledEmbed(title: string, message: string, ephermal: boolean = true): InteractionReplyOptions {
         return {
             embeds: [new EmbedBuilder()
                 .setColor(0x004d71)
                 .setTitle(title)
                 .setDescription(message)
             ],
-            ephemeral: show
+            ephemeral: ephermal
         }
     }
 
 
-    static BasicError(message: string): InteractionReplyOptions {
+    static BasicError(message: string, ephermal: boolean = true): InteractionReplyOptions {
         return {
             embeds: [new EmbedBuilder()
                 .setColor('Red')
                 .setTitle('Error')
                 .setDescription(message)],
-            ephemeral: true
+            ephemeral: ephermal
         }
     }
 
@@ -38,7 +38,7 @@ export class Embeds {
         embeds: [new EmbedBuilder()
             .setColor('Red')
             .setTitle('Error')
-            .setDescription('`An error has occured`')],
+            .setDescription('An error has occured')],
         ephemeral: true
     }
 
@@ -46,7 +46,7 @@ export class Embeds {
         embeds: [new EmbedBuilder()
             .setColor('Red')
             .setTitle('Error')
-            .setDescription('`This command cannot be executed here`'),
+            .setDescription('This command cannot be executed here'),
         ],
         ephemeral: true,
     }

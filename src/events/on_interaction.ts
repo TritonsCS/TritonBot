@@ -1,7 +1,7 @@
 import { commandsList } from "../bot"
 import { ChatInputCommandInteraction, Client, Interaction } from "discord.js"
 import { handleModalSubmit } from "../commands/verification"
-import { Embeds } from "../utils/discord_utils"
+import { Embeds } from "../utils/embeds"
 
 export default (client: Client): void => {
     client.on("interactionCreate", async (interaction: Interaction) => {

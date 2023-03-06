@@ -12,7 +12,7 @@ import {
 import moment from "moment"
 import { verificationChannel, verifiedRole } from "../config.json"
 import { Command } from "../interface/command"
-import { Embeds } from "../utils/discord_utils"
+import { Embeds } from "../utils/embeds"
 import { verifyStudent } from "../utils/triton_verifier"
 
 export const VerifyCommand: Command = {
