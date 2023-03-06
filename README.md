@@ -12,7 +12,7 @@
 <br/>
 
 ### Features
-- [X] User verification - New members are required to verify using their ctcLinkId and birth date (See [Disclaimer](https://github.com/devPesto/TritonBot/edit/master/README.md#disclaimer) below)
+- [X] User verification - New members are required to verify using their ctcLinkId and birth date (See [Disclaimer](https://github.com/devPesto/TritonBot#disclaimer) below)
 - [X] XY problem - Educate people on how to ask better questions 
 - [ ] Event/meeting planner - Plan group study sessions/meetings
 - [ ] Pizza Orders - Order pizzas based on how many people plan to show up to in-person meetings  
