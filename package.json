@@ -17,7 +17,7 @@
   "author": "_Pesto",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.14.6",
+    "@types/node": "^18.15.0",
     "axios": "^1.3.4",
     "copyfiles": "^2.4.1",
     "discord.js": "^14.6.0",
